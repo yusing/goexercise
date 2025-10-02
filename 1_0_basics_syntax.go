@@ -19,6 +19,8 @@ func ConcatN(strings ...string) string {
 	// Caller will pass in a variable number of strings, e.g. ConcatN("a", "b", "c"), ConcatN("a", "b", "c", "d", "e").
 	//
 	// Use strings.Builder for efficient string concatenation.
+	// Just type the module name (e.g. strings.) to autocomplete,
+	// enable format on save to automatically import the module on file save.
 	return ""
 }
 
@@ -60,4 +62,16 @@ func StringToInt(s string) (int, error) {
 	// TODO: implement
 	// return the integer representation of the string
 	return 0, nil
+}
+
+func SliceCopy(src []int) []int {
+	// TODO: implement
+	// return a copy of the slice, underlying pointer should be different
+	return []int{}
+}
+
+func MapCopy(src map[string]int) map[string]int {
+	// TODO: implement
+	// return a copy of the map, underlying pointer should be different
+	return map[string]int{}
 }

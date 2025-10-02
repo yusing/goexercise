@@ -456,3 +456,51 @@ func TestStringToInt(t *testing.T) {
 		})
 	}
 }
+
+func TestSliceCopy(t *testing.T) {
+	tests := []struct {
+		name  string
+		input []int
+	}{
+		{
+			name:  "simple slice",
+			input: []int{1, 2, 3},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := goexercises.SliceCopy(tt.input)
+			if !reflect.DeepEqual(result, tt.input) {
+				t.Errorf("SliceCopy(%v) = %v, want %v", tt.input, result, tt.input)
+			}
+			if &result[0] == &tt.input[0] {
+				t.Errorf("SliceCopy(%v) = %v should return a new slice", tt.input, result)
+			}
+		})
+	}
+}
+
+func TestMapCopy(t *testing.T) {
+	tests := []struct {
+		name  string
+		input map[string]int
+	}{
+		{
+			name:  "simple map",
+			input: map[string]int{"a": 1, "b": 2, "c": 3},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := goexercises.MapCopy(tt.input)
+			if !reflect.DeepEqual(result, tt.input) {
+				t.Errorf("MapCopy(%v) = %v, want %v", tt.input, result, tt.input)
+			}
+			if reflect.ValueOf(result).Pointer() == reflect.ValueOf(tt.input).Pointer() {
+				t.Errorf("MapCopy(%v) = %v should return a new map", tt.input, result)
+			}
+		})
+	}
+}
