@@ -75,3 +75,11 @@ func MapCopy(src map[string]int) map[string]int {
 	// return a copy of the map, underlying pointer should be different
 	return map[string]int{}
 }
+
+func FormatString(time, title, msg string) string {
+	// TODO: implement
+	// return the string in format of "[time] title: msg"
+	//
+	// tips: use fmt.Sprintf to format the string
+	return ""
+}

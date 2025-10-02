@@ -504,3 +504,30 @@ func TestMapCopy(t *testing.T) {
 		})
 	}
 }
+
+func TestFormatString(t *testing.T) {
+	tests := []struct {
+		name     string
+		time     string
+		title    string
+		msg      string
+		expected string
+	}{
+		{
+			name:     "simple string",
+			time:     "2021-01-01 12:00:00",
+			title:    "Hello",
+			msg:      "World",
+			expected: "[2021-01-01 12:00:00] Hello: World",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := goexercises.FormatString(tt.time, tt.title, tt.msg)
+			if result != tt.expected {
+				t.Errorf("FormatString(%q, %q, %q) = %q, want %q", tt.time, tt.title, tt.msg, result, tt.expected)
+			}
+		})
+	}
+}
